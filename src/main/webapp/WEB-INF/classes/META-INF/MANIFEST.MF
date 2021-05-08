@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: demo-2
+Implementation-Version: 1.0
+Built-By: Etudiant
+Implementation-Vendor-Id: Esprit
+Build-Jdk: 1.8.0_281
+Implementation-URL: https://spring.io/projects/spring-boot/Kindergarte
+ n
+Created-By: Maven Integration for Eclipse
+
