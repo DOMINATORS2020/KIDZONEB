@@ -3,9 +3,10 @@ package tn.esprit.kidzone.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.annotation.ManagedBean;
 import javax.persistence.*;
 
-
+@ManagedBean(value="user")
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
@@ -25,8 +26,34 @@ public class User implements Serializable {
 	@Column (nullable = false)
 	@Enumerated (EnumType.STRING) 
 	private RoleName role;
-	@Temporal (TemporalType.DATE)
-	private Date date;
+	@Column(name = "failed_attempt")
+	private int failedAttempt;
+
+	@Column(name = "lock_time")
+	private Date lockTime;
+	@Column(name = "account_non_locked")
+	private boolean accountNonLocked;
+	
+	
+	
+	public boolean isAccountNonLocked() {
+		return accountNonLocked;
+	}
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
+	public int getFailedAttempt() {
+		return failedAttempt;
+	}
+	public void setFailedAttempt(int failedAttempt) {
+		this.failedAttempt = failedAttempt;
+	}
+	public Date getLockTime() {
+		return lockTime;
+	}
+	public void setLockTime(Date lockTime) {
+		this.lockTime = lockTime;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -64,12 +91,7 @@ public class User implements Serializable {
 	public void setRole(RoleName role) {
 		this.role = role;
 	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
+
 	
 	
 	public String getLogin() {
@@ -88,15 +110,23 @@ public class User implements Serializable {
 		this.lastName = lastName;
 		this.enabled = enabled;
 		this.role = role;
-		this.date = date;
+
 	}
 	
+	
+	public User(String login, String firstName, String password, String lastName) {
+	
+		this.login = login;
+		this.firstName = firstName;
+		this.password = password;
+		this.lastName = lastName;
+	}
 	public User() {
 	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + login + ", firstName=" + firstName + ", password=" + password
-				+ ", lastName=" + lastName + ", enabled=" + enabled + ", role=" + role + ", date=" + date + "]";
+				+ ", lastName=" + lastName + ", enabled=" + enabled + ", role=" + role +  "]";
 	}
 	public User (String name){
 		this.firstName=name;

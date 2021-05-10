@@ -1,7 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/template.xhtml">
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<h:head>
 		<!-- Compiled and minified CSS -->
 		<link rel="stylesheet"
@@ -12,6 +12,7 @@
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	</h:head>
+	
 	<h:body styleClass="cyan lighten-5">
 		<div class="valign-wrapper" id="login-page">
 			<div class="container">
@@ -23,14 +24,14 @@
 									<img class="responsive-img" alt="" src="img/kidzone2.png" />
 								</div>
 								<div class="left-align"></div>
-								<h:form id="login-form">
+								<h:form id="form">
 									<div class="col s12 input-field">
-										<h:inputText id="login" required="true"
+									
+										<h:inputText id="Email" required="true"
 											requiredMessage="username is required"
 											value="#{userController.login}">
 										</h:inputText>
-										<h:outputLabel for="username" value="Username">
-
+									<h:outputLabel for="username" value="Username">
 										</h:outputLabel>
 									</div>
 									<div class="col s12 input-field">
@@ -41,8 +42,9 @@
 									</div>
 
 									<div class="col s12 input-field">
-										<h:commandLink value="login" styleClass="btn btn-large"
+										<h:commandLink id="btn" value="login" styleClass="btn btn-large"
 											action="#{userController.doLogin()}"></h:commandLink>
+											<br/><h4><h:message class="error" for="btn" style="color:red"></h:message></h4>
 									</div>
 								</h:form>
 

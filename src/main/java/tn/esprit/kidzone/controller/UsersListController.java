@@ -17,7 +17,7 @@ import tn.esprit.kidzone.services.UserServiceImpl;
 
 @Scope(value = "session")
 @Component(value = "usersList")
-@ELBeanName(value = "UsersList")
+@ELBeanName(value = "usersList")
 @Join(path = "/admin/", to = "/listusers.jsf")
 public class UsersListController {
 
